@@ -1,4 +1,4 @@
-# flexstatus - A Flexible Status Bar Tool
+# flexstatus
 
 flexstatus is a status bar generator to use with programs like Dzen2 or lemonbar (or i3bar).  
 
