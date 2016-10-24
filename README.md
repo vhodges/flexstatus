@@ -2,8 +2,7 @@ flexstatus is a status bar generator to use with programs like Dzen2 or lemonbar
 
 I originally started with yabar (which I really like) but it seems to pick random y locations and so is not usable for me. 
 
-My intent is to replace my shellscript https://github.com/vhodges/dotfiles/blob/master/utils/bin/panel.sh since it can take upto a second to reflect the proper workspace name.  I want to have lots of built in widgets. Each of the above has widgets that I like but none have
-all of them in one place.  Lastly it will use Go templates so that it can stay agnostic as far as which bar to use for rendering.
+My intent is to replace my shellscript https://github.com/vhodges/dotfiles/blob/master/utils/bin/panel.sh since it can take upto a second to reflect the proper workspace name.  I want to have lots of built in widgets and lastly it will use Go templates so that it can stay agnostic as far as which bar to use for rendering.
 
 But there are a fair amount of tools for this kind of thing (I'll add more as I find them):
 
