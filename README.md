@@ -20,6 +20,33 @@ Coming Soon:
 * Stream updates from a file (ie a FIFO)
 * Moar widgets!
 
+## Building/Running
+
+Building:
+
+Uses Go so you need Go setup (including GOPATH):
+
+```
+  go get -u github.com/vhodges/flexstatus
+```
+
+Will leave the flexstatus binary in $GOPATH/bin
+
+I'll look into building downloadable releases with binaries and/or packaging it up for the AUR
+
+Running:
+
+```
+  ./flexstatus -config sample_widgets.toml
+```
+
+If the config file can't be found (or errors when loading it) it
+adds a clock and a version string to the bar so you can at least
+see something.
+
+The config file defaults to $HOME/.flexstatus_widgets.toml if not
+specified on the command line.
+
 ## Similar/Related
 
 There are a fair amount of tools for this kind of thing (I'll add more as I find them):
