@@ -1,0 +1,44 @@
+#
+# Sample set of widgets for flexstatus
+#
+
+#
+# Templates are Go templates (https://golang.org/pkg/text/template/)
+#
+# A set of useful functions from https://github.com/Masterminds/sprig
+# are available to template authors
+#
+
+# Display window manager desktop information
+[[widget]]
+Kind = "Desktop"
+Template = "{{ .Title }} :: "
+#Template: "({{ .Current }}/{{ .Count }}) ::",
+#Template: "{{$c := .Current}} {{range $index, $element := .DesktopNames}}{{ $i := add $index 1}}{{if eq $i $c}}\u25A3 {{else}}\u25A1 {{end}}{{end}}",
+
+# Display Data and/or time (updates date time every Sleep milli seconds)
+[[widget]]
+kind = "Clock"
+DateFormat = "Mon 2 Jan, 15:04"
+Sleep = 500
+Template= "{{.FormattedDateTime}} :: "
+
+# A File poller (reads filename's contents every sleep milliseconds)
+[[widget]]
+kind = "PollFile"
+sleep = 1000
+Filename= "/sys/class/thermal/thermal_zone0/temp"
+Template= "File Poll Temp: {{div .Value 1000}}c :: "
+
+# Run command every sleep milliseconds and capture the output
+[[widget]]
+kind = "PollCommand"
+sleep = 1000
+Command=  "cat"
+Args=     ["/sys/class/thermal/thermal_zone0/temp"]
+Template= "Command Poll Temp: {{div .Value 1000}}c :: "
+
+[[widget]]
+kind = "Text"
+Value = " -- Hello World  --  "
+# Text kinds have no template
