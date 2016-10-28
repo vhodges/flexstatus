@@ -63,6 +63,17 @@ func get_widgets(filename string) []widgets.Widget {
 				Filename:   w.Filename,
 				Millis:     time.Duration(w.Sleep),
 			})
+		case "StreamCommand":
+			active = append(active, &widgets.Streamer{
+				BaseWidget: widgets.BaseWidget{Template: w.Template},
+				Command:    w.Command,
+				Args:       w.Args,
+			})
+		case "StreamFile":
+			active = append(active, &widgets.Streamer{
+				BaseWidget: widgets.BaseWidget{Template: w.Template},
+				Filename:   w.Filename,
+			})
 		case "Text":
 			active = append(active, &widgets.Text{
 				BaseWidget: widgets.BaseWidget{Template: w.Value},
