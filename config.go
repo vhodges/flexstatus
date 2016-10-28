@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"./widgets"
-
 	"github.com/BurntSushi/toml"
+	"github.com/vhodges/flexstatus/widgets"
 )
 
 type widgetconfig struct {

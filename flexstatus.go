@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"./widgets"
+	"github.com/vhodges/flexstatus/widgets"
 )
 
 func main() {

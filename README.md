@@ -1,30 +1,35 @@
-flexstatus is a status bar generator to use with programs like Dzen2 or lemonbar (or i3bar).  So why yet another program to generate status updates?
+flexstatus is a status bar generator to use with programs like Dzen2 or lemonbar.
 
-I originally started with yabar (which I really like) but it seems to pick random y locations and so is not usable for me. 
+So why yet another program to generate status updates? I originally started with yabar (which I really like) but it seems to pick random y locations and so is not usable for me. My intent is to replace my shellscript - https://github.com/vhodges/dotfiles/blob/master/utils/bin/panel.sh - since I hate that it can take upto a second to reflect the proper workspace name.
 
-My intent is to replace my shellscript https://github.com/vhodges/dotfiles/blob/master/utils/bin/panel.sh since it can take upto a second to reflect the proper workspace name.  I want to have lots of built in widgets and lastly it will use Go templates so that it can stay agnostic as far as which bar to use for rendering.
+## Features
 
-But there are a fair amount of tools for this kind of thing (I'll add more as I find them):
+Here's what it implements now/features:
+
+* Date/Time (ie a clock)
+* Workspace name (updated in realtime) (or it can display a crude pager or n/n if you prefer)
+* Static Text (for buttons)
+* Periodically poll a file, with configurable sleep duration
+* Periodically poll a command, with configurable sleep duration
+* Multiple pollers, each with their own sleep duration
+* Bar agnostic. It uses Go templates to support different bars
+
+Coming Soon:
+
+* Stream from a command in the background
+* Stream updates from a file (ie a FIFO)
+* Moar widgets!
+
+## Similar/Related
+
+There are a fair amount of tools for this kind of thing (I'll add more as I find them):
 
 * https://github.com/l3pp4rd/statusbar    (Go, only works with dzen2).
 * https://github.com/ibabushkin/bartender (Rust, I like this as it solves problems I also am having, but alas I think it's too low level)
-* https://github.com/ghedamat/go-i3status
 * https://github.com/damog/mastodon
+* https://github.com/ghedamat/go-i3status
 * https://github.com/davidscholberg/goblocks 
 * https://github.com/denbeigh2000/goi3bar
 
-## Widgets
-
-My needs are fairly minimal (but I'd like to add more as I have time):
-
-* Date/Time 
-* CPU Temp
-* CPU Usage
-* RAM usage
-* Diskspace
-* Volume
-* Workspace name
-* WiFi
-* Lock Screen (this is just a static clickable)
 
 ## License - MIT
