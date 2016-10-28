@@ -1,6 +1,6 @@
 flexstatus is a status bar generator to use with programs like Dzen2 or lemonbar.
 
-So why yet another program to generate status updates? I originally started with yabar (which I really like) but it seems to pick random y locations and so is not usable for me. My intent is to replace my shellscript - https://github.com/vhodges/dotfiles/blob/master/utils/bin/panel.sh - since I hate that it can take upto a second to reflect the proper workspace name.
+So why yet another program to generate status updates? I originally started with yabar (which I really like) but it seems to pick random y locations and so is not usable for me. My intent is to replace my panel.sh shellscript since I hate that it can take upto a second to reflect the proper workspace name.
 
 ## Features
 
