@@ -24,6 +24,10 @@ Coming Eventually
 * Will optionally run a bar (to keep it all in once mostly)
 * More widgets? IDK, I don't want to compete with Conky since the two compliment each other quite well.
 
+## My bar config
+
+https://github.com/vhodges/dotfiles/tree/master/statusbar
+
 ## Building/Running
 
 Building:
