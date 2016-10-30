@@ -16,8 +16,9 @@ type Streamer struct {
 
 	Filename string
 
-	Command string
-	Args    []string
+	Exec    string
+	Command string   // Deprecated
+	Args    []string // Deprecated
 
 	output bytes.Buffer
 }
@@ -46,19 +47,31 @@ func (widget *Streamer) Start() {
 			}
 
 		} else {
-			spyCmd := exec.Command(widget.Command, widget.Args...)
-			stream, _ = spyCmd.StdoutPipe()
-			spyCmd.Start()
+
+			var cmd *exec.Cmd
+
+			if widget.Exec != "" {
+				cmd = exec.Command("/bin/bash", "-c", widget.Exec)
+			} else {
+				cmd = exec.Command(widget.Command, widget.Args...)
+			}
+
+			stream, _ = cmd.StdoutPipe()
+
+			// Print any errors the command may output - aid debugging!
+			errstream, _ := cmd.StderrPipe()
+			go ErrorStream(widget.Command, errstream)
+
+			cmd.Start()
 		}
 
 		scanner := bufio.NewScanner(stream)
 
 		for scanner.Scan() {
 
-			s := scanner.Text()
-
 			old := widget.output.String()
 
+			s := scanner.Text()
 			s = strings.Replace(s, "\n", "", -1)
 
 			widget.output.Reset()
@@ -78,4 +91,15 @@ func (widget *Streamer) Start() {
 
 	// Block here.
 	wg.Wait()
+}
+
+func ErrorStream(cmd string, stream io.Reader) {
+	scanner := bufio.NewScanner(stream)
+
+	for scanner.Scan() {
+
+		s := scanner.Text()
+
+		fmt.Printf("%s Error: %s\n", cmd, s)
+	}
 }

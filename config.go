@@ -18,6 +18,7 @@ type widget struct {
 	Template   string
 	Filename   string
 	Sleep      int64
+	Exec       string
 	Command    string
 	Args       []string
 	DateFormat string
@@ -53,6 +54,7 @@ func get_widgets(filename string) []widgets.Widget {
 		case "PollCommand":
 			active = append(active, &widgets.Poller{
 				BaseWidget: widgets.BaseWidget{Template: w.Template},
+				Exec:       w.Exec,
 				Command:    w.Command,
 				Args:       w.Args,
 				Millis:     time.Duration(w.Sleep),
@@ -66,6 +68,7 @@ func get_widgets(filename string) []widgets.Widget {
 		case "StreamCommand":
 			active = append(active, &widgets.Streamer{
 				BaseWidget: widgets.BaseWidget{Template: w.Template},
+				Exec:       w.Exec,
 				Command:    w.Command,
 				Args:       w.Args,
 			})

@@ -13,8 +13,9 @@ type Poller struct {
 
 	Filename string
 
-	Command string
-	Args    []string
+	Exec    string
+	Command string   // Deprecated
+	Args    []string // Deprecated
 
 	Millis time.Duration
 
@@ -51,7 +52,14 @@ func (widget *Poller) Start() {
 }
 
 func (widget *Poller) runCommand(notify bool) {
-	cmd := exec.Command(widget.Command, widget.Args...)
+
+	var cmd *exec.Cmd
+
+	if widget.Exec != "" {
+		cmd = exec.Command("/bin/bash", "-c", widget.Exec)
+	} else {
+		cmd = exec.Command(widget.Command, widget.Args...)
+	}
 
 	out, err := cmd.Output()
 	if err != nil {

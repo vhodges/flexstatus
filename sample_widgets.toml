@@ -34,11 +34,24 @@ Template= "File Poll Temp: {{div .Value 1000}}c :: "
 [[widget]]
 kind = "PollCommand"
 sleep = 1000
-Command=  "cat"
-Args=     ["/sys/class/thermal/thermal_zone0/temp"]
+exec =  "cat /sys/class/thermal/thermal_zone0/temp"
 Template= "Command Poll Temp: {{div .Value 1000}}c :: "
 
+# Static text, useful for buttons, labels, etc
 [[widget]]
 kind = "Text"
 Value = " -- Hello World  --  "
 # Text kinds have no template
+
+# 'Tail' the output of a command
+[[widget]]
+Kind = "StreamCommand"
+Template = "{{ .Value }}"
+Exec = "conky -c ~/.conkyrc"
+
+# 'Tail' the output of a file (could be a fifo)
+[[widget]]
+Kind = "StreamFile"
+Template = "{{ .Value }}"
+Filane = "path/to/file"
+
