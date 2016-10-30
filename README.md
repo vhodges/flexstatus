@@ -11,14 +11,18 @@ Here's what it implements now/features:
 * Static Text (for buttons)
 * Periodically poll a file, with configurable sleep duration
 * Periodically poll a command, with configurable sleep duration
-* Multiple pollers, each with their own sleep duration
 * Bar agnostic. It uses Go templates to support different bars
+* Stream from a command in the background - New
+* Stream updates from a file (ie a FIFO) - New
+* Multiple pollers, each with their own sleep duration
+* Multiple streamers
 
-Coming Soon:
+Coming Eventually
 
-* Stream from a command in the background
-* Stream updates from a file (ie a FIFO)
-* Moar widgets!
+* MPD info? (hehe, just found https://github.com/fhs/gompd) 
+* Define template variables (to DRY up your templates)
+* Will optionally run a bar (to keep it all in once mostly)
+* More widgets? IDK, I don't want to compete with Conky since the two compliment each other quite well.
 
 ## Building/Running
 
